@@ -5,6 +5,7 @@ import com.moisesdias.ApiRestful_springboot_mongodb.domain.User;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Optional;
 
 public class UserDTO implements Serializable {
     @Serial
@@ -14,7 +15,7 @@ public class UserDTO implements Serializable {
     private String name;
     private String email;
 
-    public UserDTO() {
+    public UserDTO(Optional<User> obj) {
     }
 
     public UserDTO(User obj) {
