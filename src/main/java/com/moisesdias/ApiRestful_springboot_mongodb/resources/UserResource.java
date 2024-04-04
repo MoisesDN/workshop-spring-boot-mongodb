@@ -1,5 +1,6 @@
 package com.moisesdias.ApiRestful_springboot_mongodb.resources;
 
+import com.moisesdias.ApiRestful_springboot_mongodb.domain.Post;
 import com.moisesdias.ApiRestful_springboot_mongodb.domain.User;
 import com.moisesdias.ApiRestful_springboot_mongodb.dto.UserDTO;
 import com.moisesdias.ApiRestful_springboot_mongodb.services.UserService;
@@ -63,6 +64,14 @@ public class UserResource {
         service.update(obj);
 
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+
+        User obj = service.findById(id);
+
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
