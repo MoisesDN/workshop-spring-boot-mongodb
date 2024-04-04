@@ -1,10 +1,13 @@
 package com.moisesdias.ApiRestful_springboot_mongodb.domain;
 
 import com.moisesdias.ApiRestful_springboot_mongodb.dto.AuthorDTO;
+import com.moisesdias.ApiRestful_springboot_mongodb.dto.CommentDTO;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Post implements Serializable {
     @Serial
@@ -15,6 +18,8 @@ public class Post implements Serializable {
     private String title;
     private String body;
     private AuthorDTO author;
+
+    private List<CommentDTO> comments =new ArrayList<>();
 
     public Post(){
     }
@@ -73,6 +78,15 @@ public class Post implements Serializable {
         return this;
     }
 
+    public List<CommentDTO> getComments() {
+        return comments;
+    }
+
+    public Post setComments(List<CommentDTO> comments) {
+        this.comments = comments;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -85,6 +99,7 @@ public class Post implements Serializable {
     public int hashCode() {
         return getId() != null ? getId().hashCode() : 0;
     }
+
 
 
 }
